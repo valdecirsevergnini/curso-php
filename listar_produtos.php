@@ -10,6 +10,11 @@
 <body>
 
    <div class="container" style="margin-top: 40px;">
+
+   <div style="text-align: right;">
+            <a href="index.php" role="button" class="btn btn-sm btn-primary" style="margin-top: 10px;">Voltar</a>
+
+    </div>
       <h3>Lista de Produtos em Estoque</h3>  
        <br>
       <table class="table">
@@ -54,7 +59,8 @@
            
         
         </table>
-    </div>
+
+        
     
 
 
