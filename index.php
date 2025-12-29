@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <div class="col-sm-6">
+    <div class="col-sm-6" style="margin-top: 20px;">
         <div class="card">
         <div class="card-body">
             <h5 class="card-title">Cadastrar Categoria</h5>
@@ -40,7 +40,7 @@
         </div>
     </div>
 
-    <div class="col-sm-6">
+    <div class="col-sm-6" style="margin-top: 20px;">
         <div class="card">
         <div class="card-body">
             <h5 class="card-title">Cadastrar Fornecedor</h5>
