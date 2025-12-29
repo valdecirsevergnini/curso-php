@@ -1,10 +1,24 @@
+<?php
+include 'conexao.php';
+
+$sql_cat  = "SELECT id, nome FROM categoria ORDER BY nome";
+$result_cat = mysqli_query($conexao, $sql_cat);
+
+$sql_forn = "SELECT id, nome FROM fornecedor ORDER BY nome";
+$result_forn = mysqli_query($conexao, $sql_forn);
+?>
+
+
+
+
 <!DOCTYPE html> </html>
 <html>
 <head>
     
     <meta charset="UTF-8">
     <title>Formulário de Cadastro</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+     crossorigin="anonymous">
     <style type="text/css">
        #tamanhocontainer {
             width: 500px;
@@ -42,14 +56,20 @@
             </div>
 
             <div class="form-group">
-                <label >Categoria</label>
-                <select class="form-control" name="categoria" autocomplete="off" required>
-                    <option>Periféricos</option>
-                    <option>Hardware</option>
-                    <option>Software</option>
-                    <option>Celulares</option>
-                </select>
-            </div>
+    <label>Categoria</label>
+    <select class="form-control" name="categoria_id" required>
+        <option value="">Selecione uma Categoria</option>
+
+        <?php while($row = mysqli_fetch_assoc($result_cat)) { ?>
+            <option value="<?php echo $row['id']; ?>">
+                <?php echo $row['nome']; ?>
+            </option>
+        <?php } ?>
+
+    </select>
+</div>
+
+
 
             <div class="form-group">
                 <label>Quantidade</label>
@@ -57,14 +77,20 @@
             </div>
 
             <div class="form-group">
-                <label >Fornecedor</label>
-                <select class="form-control" name="fornecedor" autocomplete="off" required>
-                    <option>Fornecedor A</option>
-                    <option>Fornecedor B</option>
-                    <option>Fornecedor C</option>
-                    <option>Fornecedor D</option>
-                </select>
-            </div>
+    <label>Fornecedor</label>
+    <select class="form-control" name="fornecedor_id" required>
+        <option value="">Selecione um fornecedor</option>
+
+        <?php while($row = mysqli_fetch_assoc($result_forn)) { ?>
+            <option value="<?php echo $row['id']; ?>">
+                <?php echo $row['nome']; ?>
+            </option>
+        <?php } ?>
+
+    </select>
+</div>
+
+
             
             <div style="text-align: right;">
               <button type="submit" id="botao" class="btn btn-sm btn-primary" style="margin-top: 10px;">Cadastrar</button>

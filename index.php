@@ -29,6 +29,27 @@
         </div>
         </div>
     </div>
+
+    <div class="col-sm-6">
+        <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Cadastrar Categoria</h5>
+            <p class="card-text">Cadastrar novas categorias.</p>
+            <a href="adicionar_categoria.php" class="btn btn-primary">Cadastrar Categoria</a>
+        </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Cadastrar Fornecedor</h5>
+            <p class="card-text">Cadastrar novos fornecedores.</p>
+            <a href="adicionar_fornecedor.php" class="btn btn-primary">Cadastrar Fornecedor</a>
+        </div>
+        </div>
+    </div>
+
     </div>
 
 </div>
