@@ -3,6 +3,19 @@
 include 'conexao.php';
 
    $id = $_GET['id'];
+
+   /* ===============================
+   BUSCAR CATEGORIAS
+=============================== */
+$sql_cat = "SELECT id, nome FROM categoria ORDER BY nome";
+$result_cat = mysqli_query($conexao, $sql_cat);
+
+/* ===============================
+   BUSCAR FORNECEDORES
+=============================== */
+$sql_for = "SELECT id, nome FROM fornecedor ORDER BY nome";
+$result_for = mysqli_query($conexao, $sql_for);
+
 ?>
 
 <!DOCTYPE html> </html>
@@ -63,11 +76,21 @@ include 'conexao.php';
             <div class="form-group">
                 <label >Categoria</label>
                 <select class="form-control" name="categoria">
-                    <option>Periféricos</option>
-                    <option>Hardware</option>
-                    <option>Software</option>
-                    <option>Celulares</option>
+                    <option value="">Selecione uma categoria</option>
+
+                    <?php
+                    while ($cat = mysqli_fetch_assoc($result_cat)) {
+
+                        // verifica se a categoria do banco é a mesma do produto
+                        $selected = ($cat['id'] == $categoria) ? 'selected' : '';
+
+                        echo "<option value='{$cat['id']}' $selected>
+                                {$cat['nome']}
+                            </option>";
+                    }
+                    ?>
                 </select>
+
             </div>
 
             <div class="form-group">
@@ -78,11 +101,21 @@ include 'conexao.php';
             <div class="form-group">
                 <label >Fornecedor</label>
                 <select class="form-control" name="fornecedor">
-                    <option>Fornecedor A</option>
-                    <option>Fornecedor B</option>
-                    <option>Fornecedor C</option>
-                    <option>Fornecedor D</option>
+                    <option value="">Selecione um fornecedor</option>
+
+                    <?php
+                    while ($for = mysqli_fetch_assoc($result_for)) {
+
+                        // verifica se o fornecedor do banco é o mesmo do produto
+                        $selected = ($for['id'] == $fornecedor) ? 'selected' : '';
+
+                        echo "<option value='{$for['id']}' $selected>
+                                {$for['nome']}
+                            </option>";
+                    }
+                    ?>
                 </select>
+
             </div>
             
             <div style="text-align: right;">
