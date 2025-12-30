@@ -1,82 +1,54 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html> 
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Menu</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+      <title>Login </title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .container {
+        max-width: 400px;
+        margin: 80px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        font-weight: bold;
+      }
+    </style>
 </head>
 <body>
+    <div class="container" >
 
-   <div class="container" style="margin-top: 100px;">
+      <form>
+        <div class="form-group">
 
-    <div class="row">
-    <div class="col-sm-6 mb-3 mb-sm-0">
-        <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Adcionar Produto</h5>
-            <p class="card-text">Opção para adicionar produtos em nosso estoque</p>
-            <a href="adicionar_produto.php" class="btn btn-primary">Cadastrar Produto</a>
+        <img src="imagem/cadeado.png" alt="Logo" class="img-fluid" style="display: block; margin: 0 auto 20px; max-width: 100px;">
+
+          <label>Usuário</label>
+          <input type="text" name="usuario" class="form-control" placeholder="Digite seu usuario" autocomplete="off" required>
         </div>
+
+        <div class="form-group">
+          <label>Senha</label>
+          <input type="password" name="senha" class="form-control" placeholder="Digite sua senha" autocomplete="off" required>
+        </div>
+      </form>
+        <div style="text-align: right; margin-top: 20px;">
+          <button type="submit" class="btn btn-sm btn-success">Entrar</button>
         </div>
     </div>
-    <div class="col-sm-6">
-        <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Lista de Produtos</h5>
-            <p class="card-text">Visualizar, editar e deletar produtos.</p>
-            <a href="listar_produtos.php" class="btn btn-primary">Produtos</a>
-        </div>
-        </div>
-    </div>
-
-    <div class="col-sm-6" style="margin-top: 20px;">
-        <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Cadastrar Categoria</h5>
-            <p class="card-text">Cadastrar novas categorias.</p>
-            <a href="adicionar_categoria.php" class="btn btn-primary">Cadastrar Categoria</a>
-        </div>
-        </div>
-    </div>
-
-    <div class="col-sm-6" style="margin-top: 20px;">
-        <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Listar Categorias</h5>
-            <p class="card-text">Visualizar, editar e deletar categorias.</p>
-            <a href="listar_categoria.php" class="btn btn-primary">Listar Categorias</a>
-        </div>
-        </div>
-    </div>
-
-    <div class="col-sm-6" style="margin-top: 20px;">
-        <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Cadastrar Fornecedor</h5>
-            <p class="card-text">Cadastrar novos fornecedores.</p>
-            <a href="adicionar_fornecedor.php" class="btn btn-primary">Cadastrar Fornecedor</a>
-        </div>
-        </div>
-    </div>
-
-    <div class="col-sm-6" style="margin-top: 20px;">
-        <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Listar Fornecedor</h5>
-            <p class="card-text">Visualizar, editar e deletar fornecedores.</p>
-            <a href="listar_fornecedor.php" class="btn btn-primary">Listar Fornecedor</a>
-        </div>
-        </div>
-    </div>
-
-     
-
-    </div>
-
-</div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-
 </body>
 </html>
