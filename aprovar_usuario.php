@@ -6,6 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/896d73cde9.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
@@ -49,7 +50,7 @@
             <td>
                 <a 
                     class="btn btn-success btn-sm text-center"
-                    style="color:#fff; width:120px;"
+                    style="color:#fff; width:120px; white-space: nowrap;"
                     href="_aprovar_usuario.php?id=<?php echo $id_usuario ?> &nivel=1"
                 >
                     <i class="fa-solid fa-check"></i> Administrador
@@ -72,7 +73,7 @@
                 <a 
                     class="btn btn-danger btn-sm text-center"
                     style="color:#fff; width:120px;"
-                    href="_deletar_usuario.php?id=<?php echo $id_usuario; ?> &nivel=<?php echo $nivel_usuario; ?>"
+                    href="_deletar_usuario.php?id=<?php echo $id_usuario; ?>"
                     onclick="return confirm('Tem certeza que deseja excluir este usuário?');"
                 >
                     <i class="fa-solid fa-trash"></i> Excluir

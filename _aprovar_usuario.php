@@ -26,5 +26,5 @@ if ($nivel == 3) {
 }
 
 
-
+header('Location: aprovar_usuario.php');//redireciona para a página de aprovação de usuários
 ?>
