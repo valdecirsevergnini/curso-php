@@ -37,7 +37,7 @@ $result_forn = mysqli_query($conexao, $sql_forn);
     <div class="container" id="tamanhocontainer" style="margin-top: 40px;">
 
     <div style="text-align: right;">
-            <a href="index.php" role="button" class="btn btn-sm btn-primary" style="margin-top: 10px;">Voltar</a>
+            <a href="menu.php" role="button" class="btn btn-sm btn-primary" style="margin-top: 10px;">Voltar</a>
 
     </div>
 
