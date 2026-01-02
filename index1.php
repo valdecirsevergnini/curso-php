@@ -12,7 +12,7 @@ if ($usuario === '' || $senhausuario === '') {
 }
 
 // Busca usuário no banco (SEM SQL Injection)
-$stmt = mysqli_prepare($conexao, "SELECT mail_usuario, senha_usuario FROM usuarios WHERE mail_usuario = ?");
+$stmt = mysqli_prepare($conexao, "SELECT mail_usuario, senha_usuario FROM usuarios WHERE mail_usuario = ? and status='Ativo'");
 mysqli_stmt_bind_param($stmt, "s", $usuario);
 mysqli_stmt_execute($stmt);
 

@@ -1,0 +1,159 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Tempo de geração: 02/01/2026 às 19:32
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Banco de dados: `curso_estoque`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `categoria`
+--
+
+CREATE TABLE `categoria` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `categoria`
+--
+
+INSERT INTO `categoria` (`id`, `nome`) VALUES
+(2, 'Games '),
+(6, 'Hardware'),
+(8, 'Monitor '),
+(7, 'Software');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `estoque`
+--
+
+CREATE TABLE `estoque` (
+  `id_estoque` int(11) NOT NULL,
+  `nro_produto` int(11) NOT NULL,
+  `nomeproduto` varchar(200) NOT NULL,
+  `categoria` varchar(100) NOT NULL,
+  `quantidade` int(11) NOT NULL,
+  `fornecedor` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `estoque`
+--
+
+INSERT INTO `estoque` (`id_estoque`, `nro_produto`, `nomeproduto`, `categoria`, `quantidade`, `fornecedor`) VALUES
+(1, 1, 'Placa de Video 3070ti oros master ', '2', 2, ''),
+(2, 2, 'Teclado Mecânico', 'Periféricos', 30, 'Fornecedor B'),
+(4, 4, 'Caixa de som', 'Periféricos', 15, 'Fornecedor A');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `fornecedor`
+--
+
+CREATE TABLE `fornecedor` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `cnpj` varchar(18) NOT NULL,
+  `endereco` varchar(150) NOT NULL,
+  `telefone` varchar(20) NOT NULL,
+  `descricao` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id_usuario` int(11) NOT NULL,
+  `nome_usuario` varchar(200) NOT NULL,
+  `mail_usuario` varchar(250) NOT NULL,
+  `senha_usuario` varchar(50) NOT NULL,
+  `nivel_usuario` int(2) NOT NULL,
+  `status` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices de tabela `categoria`
+--
+ALTER TABLE `categoria`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `nome` (`nome`);
+
+--
+-- Índices de tabela `estoque`
+--
+ALTER TABLE `estoque`
+  ADD PRIMARY KEY (`id_estoque`);
+
+--
+-- Índices de tabela `fornecedor`
+--
+ALTER TABLE `fornecedor`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_usuario`);
+
+--
+-- AUTO_INCREMENT para tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `categoria`
+--
+ALTER TABLE `categoria`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de tabela `estoque`
+--
+ALTER TABLE `estoque`
+  MODIFY `id_estoque` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de tabela `fornecedor`
+--
+ALTER TABLE `fornecedor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

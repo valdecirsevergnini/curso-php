@@ -1,3 +1,28 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['usuario'])) {
+    header('Location: index.php');
+    exit;
+}
+
+include 'conexao.php';
+
+$usuario = $_SESSION['usuario']; // vem do login
+
+$sql = "SELECT nivel_usuario FROM usuarios 
+        WHERE mail_usuario = '$usuario' AND status='Ativo'";
+
+$buscar = mysqli_query($conexao, $sql);
+$array  = mysqli_fetch_array($buscar);
+
+if (!$array) {
+    echo "Usuário não encontrado ou inativo.";
+    exit;
+}
+
+$nivel = (int)$array['nivel_usuario']; // 1, 2 ou 3
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,102 +32,119 @@
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
-<?php
-session_start();
 
-if (!isset($_SESSION['usuario'])) {
-    header('Location: index.php');
-    exit;
-}
-?>
-
-
-   <div class="container" style="margin-top: 100px;">
-
+<div class="container" style="margin-top: 100px;">
     <div class="row">
-    <div class="col-sm-6 mb-3 mb-sm-0">
-        <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Adcionar Produto</h5>
-            <p class="card-text">Opção para adicionar produtos em nosso estoque</p>
-            <a href="adicionar_produto.php" class="btn btn-primary">Cadastrar Produto</a>
-        </div>
-        </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Lista de Produtos</h5>
-            <p class="card-text">Visualizar, editar e deletar produtos.</p>
-            <a href="listar_produtos.php" class="btn btn-primary">Produtos</a>
-        </div>
-        </div>
-    </div>
 
-    <div class="col-sm-6" style="margin-top: 20px;">
-        <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Cadastrar Categoria</h5>
-            <p class="card-text">Cadastrar novas categorias.</p>
-            <a href="adicionar_categoria.php" class="btn btn-primary">Cadastrar Categoria</a>
+        <!-- =======================
+             NIVEL 1, 2 e 3 (PRODUTOS)
+             ======================= -->
+
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Adcionar Produto</h5>
+                    <p class="card-text">Opção para adicionar produtos em nosso estoque</p>
+                    <a href="adicionar_produto.php" class="btn btn-primary">Cadastrar Produto</a>
+                </div>
+            </div>
         </div>
+
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Lista de Produtos</h5>
+                    <p class="card-text">Visualizar, editar e deletar produtos.</p>
+                    <a href="listar_produtos.php" class="btn btn-primary">Produtos</a>
+                </div>
+            </div>
         </div>
+
+        <!-- ============================
+             NIVEL 1 e 2 (CATEGORIA/FORNECEDOR)
+             ============================ -->
+        <?php if ($nivel == 1 || $nivel == 2) { ?>
+
+            <div class="col-sm-6" style="margin-top: 20px;">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Cadastrar Categoria</h5>
+                        <p class="card-text">Cadastrar novas categorias.</p>
+                        <a href="adicionar_categoria.php" class="btn btn-primary">Cadastrar Categoria</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6" style="margin-top: 20px;">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Listar Categorias</h5>
+                        <p class="card-text">Visualizar, editar e deletar categorias.</p>
+                        <a href="listar_categoria.php" class="btn btn-primary">Listar Categorias</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6" style="margin-top: 20px;">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Cadastrar Fornecedor</h5>
+                        <p class="card-text">Cadastrar novos fornecedores.</p>
+                        <a href="adicionar_fornecedor.php" class="btn btn-primary">Cadastrar Fornecedor</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6" style="margin-top: 20px;">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Listar Fornecedor</h5>
+                        <p class="card-text">Visualizar, editar e deletar fornecedores.</p>
+                        <a href="listar_fornecedor.php" class="btn btn-primary">Listar Fornecedor</a>
+                    </div>
+                </div>
+            </div>
+
+        <?php } ?>
+
+        <!-- =======================
+             SOMENTE NIVEL 1 (USUÁRIOS)
+             ======================= -->
+        <?php if ($nivel == 1) { ?>
+
+            <div class="col-sm-6" style="margin-top: 20px;">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Aprovar Usuários</h5>
+                        <p class="card-text">Aprovar novos usuários cadastrados.</p>
+                        <a href="aprovar_usuario.php" class="btn btn-primary">Aprovar</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6" style="margin-top: 20px;">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Listar Usuários</h5>
+                        <p class="card-text">Listar e editar usuários cadastrados.</p>
+                        <a href="listar_usuario.php" class="btn btn-primary">Listar Usuários</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6" style="margin-top: 20px;">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Cadastrar Usuários</h5>
+                        <p class="card-text">Cadastrar novos usuários.</p>
+                        <a href="cadastro_usuario.php" class="btn btn-primary">Cadastrar Usuário</a>
+                    </div>
+                </div>
+            </div>
+
+        <?php } ?>
+
     </div>
-
-    <div class="col-sm-6" style="margin-top: 20px;">
-        <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Listar Categorias</h5>
-            <p class="card-text">Visualizar, editar e deletar categorias.</p>
-            <a href="listar_categoria.php" class="btn btn-primary">Listar Categorias</a>
-        </div>
-        </div>
-    </div>
-
-    <div class="col-sm-6" style="margin-top: 20px;">
-        <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Cadastrar Fornecedor</h5>
-            <p class="card-text">Cadastrar novos fornecedores.</p>
-            <a href="adicionar_fornecedor.php" class="btn btn-primary">Cadastrar Fornecedor</a>
-        </div>
-        </div>
-    </div>
-
-    <div class="col-sm-6" style="margin-top: 20px;">
-        <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Listar Fornecedor</h5>
-            <p class="card-text">Visualizar, editar e deletar fornecedores.</p>
-            <a href="listar_fornecedor.php" class="btn btn-primary">Listar Fornecedor</a>
-        </div>
-        </div>
-    </div>
-
-    <div class="col-sm-6" style="margin-top: 20px;">
-        <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Aprovar Usuários</h5>
-            <p class="card-text">Aprovar novos usuários cadastrados.</p>
-            <a href="aprovar_usuario.php" class="btn btn-primary">Aprovar</a>
-        </div>
-        </div>
-    </div>
-
-    <div class="col-sm-6" style="margin-top: 20px;">
-        <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Listar Usuários</h5>
-            <p class="card-text">Listar e editar usuários cadastrados.</p>
-            <a href="listar_usuario.php" class="btn btn-primary">Listar Usuários</a>
-        </div>
-        </div>
-    </div>
-
-     
-
-    </div>
-
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
