@@ -28,13 +28,14 @@
     </style>
 </head>
 <body>
+  
     <div class="container" >
 
-      <form>
+       <img src="imagem/cadeado.png" alt="Logo" class="img-fluid" style="display: block; margin: 0 auto 20px; max-width: 100px;">
+
+     <form action="index1.php" method="POST">
+
         <div class="form-group">
-
-        <img src="imagem/cadeado.png" alt="Logo" class="img-fluid" style="display: block; margin: 0 auto 20px; max-width: 100px;">
-
           <label>Usuário</label>
           <input type="text" name="usuario" class="form-control" placeholder="Digite seu usuario" autocomplete="off" required>
         </div>
@@ -43,18 +44,22 @@
           <label>Senha</label>
           <input type="password" name="senha" class="form-control" placeholder="Digite sua senha" autocomplete="off" required>
         </div>
-      </form>
+
         <div style="text-align: right; margin-top: 20px;">
           <button type="submit" class="btn btn-sm btn-success">Entrar</button>
         </div>
-    </div>
 
+      </form>
+        
+    </div>
+    
     <div style="margin-top: 10px; text-align: center;">
         <center>
           <small>Você não possui cadastro? Clique <a href="cadastro_usuario_externo.php" style="display: inline-block;">aqui</a></small>
         </center>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

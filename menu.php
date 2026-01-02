@@ -7,6 +7,15 @@
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
+<?php
+session_start();
+
+if (!isset($_SESSION['usuario'])) {
+    header('Location: index.php');
+    exit;
+}
+?>
+
 
    <div class="container" style="margin-top: 100px;">
 

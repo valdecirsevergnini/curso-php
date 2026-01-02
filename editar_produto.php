@@ -40,6 +40,15 @@ $result_for = mysqli_query($conexao, $sql_for);
 </head>
 <body>
 
+<?php
+session_start();
+
+if (!isset($_SESSION['usuario'])) {
+    header('Location: index.php');
+    exit;
+}
+?>
+
 
     <div class="container" id="tamanhocontainer" style="margin-top: 40px;">
 

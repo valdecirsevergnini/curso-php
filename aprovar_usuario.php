@@ -10,6 +10,15 @@
 </head>
 <body>
 
+<?php
+session_start();
+
+if (!isset($_SESSION['usuario'])) {
+    header('Location: index.php');
+    exit;
+}
+?>
+
    <div class="container" style="margin-top: 40px;" >
 
    <div style="text-align: right;">
